@@ -1,0 +1,12 @@
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    Recent Repositories
+  </a>
+  <!-- <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item">Morbi leo risus</a>
+  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item">Vestibulum at eros</a> -->
+  <a *ngFor="let item of repos" href="#" class="list-group-item">{{item.name}} <span class="badge" style="float: right;">{{item.commits | number}} total commits</span></a>
+
+ 
+</div>

@@ -1,0 +1,20 @@
+.navbar {
+    background-color: #2693ff;
+}
+
+.container {
+    font-weight: 300;
+    width: 50%;
+    float: left;
+    margin: 0;
+}
+
+a {
+    color: white !important;
+    font-weight: 100 !important;
+}
+
+li:active {
+    background-color: #eeeeee;
+    color: black;
+}
