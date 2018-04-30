@@ -10,6 +10,7 @@ import { ReposComponent } from './repos/repos.component';
 import { RouterModule, Route } from '@angular/router';
 import { RecentReposComponent } from './home/recent-repos/recent-repos.component';
 import { StoreService } from './-services/store.service';
+import { RepoComponent } from './repos/repo/repo.component';
 
 const appRoutes: Route[] = [
 
@@ -17,6 +18,7 @@ const appRoutes: Route[] = [
   { path: "about", component: AboutComponent },
   { path: "home", component: HomeComponent },
   { path: "repos", component: ReposComponent },
+  { path: "repo", component: RepoComponent },
   
 
 ]
@@ -28,7 +30,8 @@ const appRoutes: Route[] = [
     ToolbarComponent,
     AboutComponent,
     ReposComponent,
-    RecentReposComponent
+    RecentReposComponent,
+    RepoComponent
   ],
   imports: [
     BrowserModule,

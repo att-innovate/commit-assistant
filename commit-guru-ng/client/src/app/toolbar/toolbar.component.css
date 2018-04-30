@@ -3,18 +3,29 @@
 }
 
 .container {
-    font-weight: 300;
+    /* font-weight: 300; */
+    font-size: 18px;
     width: 50%;
     float: left;
     margin: 0;
+    height: 28px;
 }
 
 a {
-    color: white !important;
-    font-weight: 100 !important;
+    color: white;
+    font-weight: 100;
 }
 
-li:active {
+/* li:active {
     background-color: #eeeeee;
     color: black;
+} */
+.nav-item {
+    color: white;
+}
+
+.selected {
+    background-color: #eeeeee;
+    color: rgb(45, 45, 61);
+    font-weight: 600;
 }

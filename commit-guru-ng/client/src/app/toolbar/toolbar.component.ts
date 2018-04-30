@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./toolbar.component.css']
 })
 export class ToolbarComponent implements OnInit {
-
+  selected:number =1;
   constructor(private router:Router) { }
 
   ngOnInit() {
@@ -15,5 +15,9 @@ export class ToolbarComponent implements OnInit {
 
   goto(str){
     this.router.navigateByUrl(str);
+  }
+
+  onClick(num) {
+    this.selected = num;
   }
 }
