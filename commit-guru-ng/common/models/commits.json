@@ -1,0 +1,101 @@
+{
+  "name": "commits",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "commit_hash": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "author_name": {
+      "type": "string"
+    },
+    "author_date_unix_timestamp": {
+      "type": "string"
+    },
+    "author_email": {
+      "type": "string"
+    },
+    "author_date": {
+      "type": "string"
+    },
+    "commit_message": {
+      "type": "string"
+    },
+    "fix": {
+      "type": "string"
+    },
+    "classification": {
+      "type": "string"
+    },
+    "contains_bug": {
+			"type": "boolean",
+      "default": false
+		},
+    "linked": {
+      "type": "boolean"
+    },
+    "fixes": {
+      "type": "string"
+    },
+    "ns": {
+      "type": "number"
+    },
+    "nd": {
+      "type": "number"
+    },
+    "nf": {
+      "type": "number"
+    },
+    "entrophy": {
+      "type": "number"
+    },
+    "la": {
+      "type": "number"
+    },
+    "fileschanged": {
+      "type": "string"
+    },
+    "lt": {
+      "type": "number"
+    },
+    "ndev": {
+      "type": "number"
+    },
+    "age": {
+      "type": "number"
+    },
+    "nuc": {
+      "type": "number"
+    },
+    "exp": {
+      "type": "number"
+    },
+    "rexp": {
+      "type": "number"
+    },
+    "sexp": {
+      "type": "number"
+    },
+    "glm_probability": {
+      "type": "number"
+    },
+    "repository_id": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "id": {
+      "type": "belongsTo",
+      "model": "repositories",
+      "foreignKey": "id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

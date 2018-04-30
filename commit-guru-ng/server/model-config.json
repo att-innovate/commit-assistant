@@ -38,5 +38,17 @@
   "repo": {
     "dataSource": "db",
     "public": true
+  },
+  "repositories": {
+    "dataSource": "postDb",
+    "public": true
+  },
+  "commits": {
+    "dataSource": "postDb",
+    "public": true
+  },
+  "test1": {
+    "dataSource": "postDb",
+    "public": true
   }
 }

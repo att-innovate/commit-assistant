@@ -2,5 +2,15 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "postDb": {
+    "host": "127.0.0.1",
+    "port": 5432,
+    "url": "postgres:postgres@localhost/cas",
+    "database": "cas",
+    "password": "postgres",
+    "name": "postDb",
+    "user": "postgres",
+    "connector": "postgresql"
   }
 }

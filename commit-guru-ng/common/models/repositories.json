@@ -1,0 +1,39 @@
+{
+  "name": "repositories",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "creation_date": {
+      "type": "date"
+    },
+    "url": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "repository_id": {
+      "type": "hasMany",
+      "model": "commits",
+      "foreignKey": "repository_id"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
