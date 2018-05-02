@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Commits</h1>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of commits">
+      {{item?.commit_message}}
+      <small style="float: right">{{item.author_name}} on {{item.author_date}}</small>
+    </li>
+  </ul>
+</div>

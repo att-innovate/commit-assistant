@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   constructor(private store:StoreService) { }
 
   ngOnInit() {
-    this.store.getRepos();
+    
   }
 
   

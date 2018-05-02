@@ -17,7 +17,7 @@ export class ReposComponent implements OnInit {
   ngOnInit() {
     //this.repos = this.store.repos;
     this.store.repos$.subscribe(repos => {
-      if (this.repos) {
+      if (repos) {
         this.repos = repos;
       }
     });
@@ -27,7 +27,7 @@ export class ReposComponent implements OnInit {
 
   onRepoClick(item:IRepo) {
     this.store.getRepoMterics(item.id);
-    this.router.navigateByUrl('repo');
+    this.router.navigateByUrl('repo-overview');
   }
 
 }

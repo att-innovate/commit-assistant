@@ -6,9 +6,10 @@ import { BehaviorSubject } from "rxjs/BehaviorSubject";
 export interface IMetrics {
   metrics:IMetric[];
   commit_contains_bug_count:number;
-  commit_contains:number;
+  commit_count:number;
   name:string;
   status:string;
+  id:string;
 }
 
 export interface IMetric {
@@ -18,6 +19,7 @@ export interface IMetric {
   name:string;
   significant:number;
 }
+
 export interface IRepo {
   name: string;
   commits: any;
@@ -26,42 +28,25 @@ export interface IRepo {
   id: any
 }
 
-/* const reposFakeData = [
-  {
-    "repository_id": "2",
-    "commit_count": "307",
-    "commit_contains_bug_count": "40"
-  },
-  {
-    "repository_id": "3",
-    "commit_count": "144",
-    "commit_contains_bug_count": "0"
-  }
-] */
-
-
 @Injectable()
 export class StoreService {
   baseApi: string = "http://localhost:3000/api";
 
   private _repos$: BehaviorSubject<IRepo[]>;
   private _repoMetrics$: BehaviorSubject<IMetrics>;
-
+  private _commits$: BehaviorSubject<any[]>;
 
   repos: IRepo[];
-  /* repos: IRepo[] = [
-    { name: "Cvaas ui", commits: 1004, status: "analyzing" },
-    { name: "netdbService", commits: 3014, status: "Analyzed 2 days ago" },
-    { name: "test", commits: 12, status: "Analyzed 12 days ago" },
-  ] */
 
   constructor(private http: HttpClient) {
     this._repos$ = <BehaviorSubject<IRepo[]>>new BehaviorSubject(null);
     this._repoMetrics$ = <BehaviorSubject<IMetrics>>new BehaviorSubject(null);
+    this._commits$ = <BehaviorSubject<any[]>>new BehaviorSubject(null);
   }
 
   get repos$(): Observable<IRepo[]> { return this._repos$.asObservable(); }
   get repoMetrics$(): Observable<IMetrics> { return this._repoMetrics$.asObservable(); }
+  get commits$(): Observable<any[]> { return this._commits$.asObservable(); }
 
   getRepos() {
     this.http.get<any>(`${this.baseApi}/commits/repositoriesSummary`)
@@ -87,19 +72,27 @@ export class StoreService {
 
   }
 
-
   getRepoMterics(id: number) {
     this.http.get<any>(`${this.baseApi}/metrics/metricByRepo?rid=${id}`).subscribe(data => {
-
-      //let metrics: IMetrics = data.metricByRepo;
-
       if (data) {
-
         this._repoMetrics$.next(Object.assign({}, data.metricByRepo));
       }
       
     }, error => {
 
     })
+  }
+
+
+  getCommitsByRepo(id) {
+    this.http.get<any>(`${this.baseApi}/commits/commitsByRepo?rid=${id}`).subscribe(data => {
+      if (data) {
+        this._commits$.next( [...data.commitsByRepo]);
+      }
+      
+    }, error => {
+
+    })
+
   }
 }

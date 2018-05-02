@@ -12,6 +12,9 @@ import { RepoComponent } from './repos/repo/repo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartModule } from 'angular2-chartjs';
 import { SubToolbarComponent } from './toolbar/sub-toolbar/sub-toolbar.component';
+import { OverviewComponent } from './repos/overview/overview.component';
+import { CommitsComponent } from './repos/commits/commits.component';
+import { OptionsComponent } from './repos/options/options.component';
 
 const appRoutes: Route[] = [
 
@@ -19,7 +22,9 @@ const appRoutes: Route[] = [
   { path: "about", component: AboutComponent },
   { path: "home", component: HomeComponent },
   { path: "repos", component: ReposComponent },
-  { path: "repo", component: RepoComponent },
+  { path: "repo-overview", component: OverviewComponent },
+  { path: "repo-commits", component: CommitsComponent },
+  { path: "repo-options", component: OptionsComponent },
 
 
 ]
@@ -33,7 +38,10 @@ const appRoutes: Route[] = [
     ReposComponent,
     RecentReposComponent,
     RepoComponent,
-    SubToolbarComponent
+    SubToolbarComponent,
+    OverviewComponent,
+    CommitsComponent,
+    OptionsComponent
   ],
   imports: [
     BrowserModule,
