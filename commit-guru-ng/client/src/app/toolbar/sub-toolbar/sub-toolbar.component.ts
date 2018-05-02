@@ -21,4 +21,7 @@ export class SubToolbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  onCommitsClick() {
+    this.store.getCommitsByRepo(this.metrics.id);
+  }
 }

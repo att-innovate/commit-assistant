@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ResolveEnd, RouterEvent, NavigationEnd } from '@angular/router';
 import { StoreService } from '../-services/store.service';
 
 @Component({
@@ -12,8 +12,15 @@ export class ToolbarComponent implements OnInit {
   showsub: boolean = false;
 
   constructor(private router: Router, private store: StoreService) {
-    this.router.events.subscribe(event=>{
-      this.showsub =false;
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        if (event.url.indexOf('repo-') == -1) {
+          this.showsub = false;
+        }
+
+      }
+
+
     })
   }
 
