@@ -1,0 +1,136 @@
+{
+  "name": "metrics",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "repo": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "nsbuggy": {
+      "type": "number"
+    },
+    "nsnonbuggy": {
+      "type": "number"
+    },
+    "ns_sig": {
+      "type": "number"
+    },
+    "ndbuggy": {
+      "type": "number"
+    },
+    "ndnonbuggy": {
+      "type": "number"
+    },
+    "nd_sig": {
+      "type": "number"
+    },
+    "nfbuggy": {
+      "type": "number"
+    },
+    "nfnonbuggy": {
+      "type": "number"
+    },
+    "nf_sig": {
+      "type": "number"
+    },
+    "entrophybuggy": {
+      "type": "number"
+    },
+    "entrophynonbuggy": {
+      "type": "number"
+    },
+    "entrophy_sig": {
+      "type": "number"
+    },
+    "labuggy": {
+      "type": "number"
+    },
+    "lanonbuggy": {
+      "type": "number"
+    },
+    "la_sig": {
+      "type": "number"
+    },
+    "ldbuggy": {
+      "type": "number"
+    },
+    "ldnonbuggy": {
+      "type": "number"
+    },
+    "ld_sig": {
+      "type": "number"
+    },
+    "ltbuggy": {
+      "type": "number"
+    },
+    "ltnonbuggy": {
+      "type": "number"
+    },
+    "lt_sig": {
+      "type": "number"
+    },
+    "ndevbuggy": {
+      "type": "number"
+    },
+    "ndevnonbuggy": {
+      "type": "number"
+    },
+    "ndev_sig": {
+      "type": "number"
+    },
+    "agebuggy": {
+      "type": "number"
+    },
+    "agenonbuggy": {
+      "type": "number"
+    },
+    "age_sig": {
+      "type": "number"
+    },
+    "nucbuggy": {
+      "type": "number"
+    },
+    "nucnonbuggy": {
+      "type": "number"
+    },
+    "nuc_sig": {
+      "type": "number"
+    },
+    "expbuggy": {
+      "type": "number"
+    },
+    "expnonbuggy": {
+      "type": "number"
+    },
+    "exp_sig": {
+      "type": "number"
+    },
+    "rexpnonbuggy": {
+      "type": "number"
+    },
+    "rexpbuggy": {
+      "type": "number"
+    },
+    "rexp_sig": {
+      "type": "number"
+    },
+    "sexpbuggy": {
+      "type": "number"
+    },
+    "sexpnonbuggy": {
+      "type": "number"
+    },
+    "sexp_sig": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

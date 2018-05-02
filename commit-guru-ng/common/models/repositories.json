@@ -31,7 +31,12 @@
     "repository_id": {
       "type": "hasMany",
       "model": "commits",
-      "foreignKey": "repository_id"
+      "foreignKey": ""
+    },
+    "repo": {
+      "type": "hasOne",
+      "model": "glm_coefficients",
+      "foreignKey": "id"
     }
   },
   "acls": [],

@@ -2,23 +2,24 @@
 
 module.exports = function(Commits) {
     Commits.status = function (cb) {
-        var sql = 'SELECT repository_id, COUNT(*) as commit_count,COUNT(nullif(contains_bug, false)) as commit_contains_bug_count FROM commits GROUP BY repository_id';
-        var params = [];
+        var sql = //'SELECT repository_id, COUNT(*) as commit_count,COUNT(nullif(contains_bug, false)) as commit_contains_bug_count FROM commits GROUP BY repository_id';
+        'SELECT repositories.id, repositories.name, repositories.status,COUNT(*) as commit_count,COUNT(nullif(commits.contains_bug, false)) as commit_contains_bug_count,commits.repository_id FROM public.repositories, public.commits WHERE repositories.id = commits.repository_id GROUP BY repositories.id,repositories.name, repositories.status, commits.repository_id';
+         var params = [];
         //var ds = Commits.datasource;//s.postDb;
         Commits.dataSource.connector.query(sql,params,function (err, response) {
             if (err) console.error(err);
             cb(null, response);
+        });  
+    };
+    Commits.commitsByRepo = function (rid, cb) {
+        Commits.find({where: {repository_id: rid}, limit: 13}, function(err, response) {
+            if (err) console.error(err);
+            cb(null, response);
         }          
         );
-
-        // if (currentHour >= OPEN_HOUR && currentHour < CLOSE_HOUR) {
-        //     response = 'We are open for business.';
-        // }
-        // else {
-        //     response = 'Sorry, we are closed. Open daily from 6am to 8pm.';
-        // }
         
     };
+    ;
     Commits.remoteMethod('status', {
         http: {
             path: '/repositoriesSummary',
@@ -26,6 +27,17 @@ module.exports = function(Commits) {
         },
         returns: {
             arg: 'status',
+            type: 'string'
+        }
+    });
+    Commits.remoteMethod('commitsByRepo', {
+        http: {
+            path: '/commitsByRepo',
+            verb: 'get'
+        },
+        accepts: {arg: 'rid', type: 'string', http: { source: 'query' } },
+        returns: {
+            arg: 'commitsByRepo',
             type: 'string'
         }
     });

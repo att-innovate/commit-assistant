@@ -1,0 +1,58 @@
+Zzzzzzzzzzzzzzzzs
+
+CREATE TABLE commits
+(
+   character varying NOT NULL,
+   character varying,
+   character varying,
+   character varying,
+   character varying,
+   character varying,
+   character varying,
+   character varying,
+   boolean,
+  contains_bug boolean,
+   character varying,
+   double precision,
+   double precision,
+   double precision,
+   double precision,
+  la double precision,
+  ld double precision,
+
+   character varying,
+  lt double precision,
+  ndev double precision,
+  age double precision,
+  nuc double precision,
+  exp double precision,
+  rexp double precision,
+  sexp double precision,
+   double precision,
+   character varying,
+  CONSTRAINT commits_pkey PRIMARY KEY (commit_hash)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE commits
+  OWNER TO postgres;
+
+
+--------------------
+
+'SELECT repository_id, COUNT(*) as commit_count,COUNT(nullif(contains_bug, false)) as commit_contains_bug_count FROM commits GROUP BY repository_id'
+
+--------------------
+
+  'SELECT   repositories.id,   repositories.name,   repositories.status,  COUNT(*) as commit_count, COUNT(nullif(commits.contains_bug, false)) as commit_contains_bug_count, commits.repository_idFROM 
+  public.repositories, 
+  public.commits
+WHERE 
+  repositories.id = commits.repository_id
+GROUP BY repositories.id,repositories.name, 
+  repositories.status;'
+
+
+
+'SELECT repositories.id, repositories.name, repositories.status,COUNT(*) as commit_count,COUNT(nullif(commits.contains_bug, false)) as commit_contains_bug_count,commits.repository_idFROM public.repositories, public.commits WHERE repositories.id = commits.repository_id GROUP BY repositories.id,repositories.name, repositories.status'

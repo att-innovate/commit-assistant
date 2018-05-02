@@ -1,0 +1,103 @@
+{
+  "name": "glm_coefficients",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "repo": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "intercept": {
+      "type": "number"
+    },
+    "intercept_sig": {
+      "type": "number"
+    },
+    "ns": {
+      "type": "number"
+    },
+    "ns_sig": {
+      "type": "number"
+    },
+    "nd": {
+      "type": "number"
+    },
+    "nd_sig": {
+      "type": "number"
+    },
+    "nf": {
+      "type": "number"
+    },
+    "nf_sig": {
+      "type": "number"
+    },
+    "entrophy": {
+      "type": "number"
+    },
+    "entrophy_sig": {
+      "type": "number"
+    },
+    "la": {
+      "type": "number"
+    },
+    "la_sig": {
+      "type": "number"
+    },
+    "ld": {
+      "type": "number"
+    },
+    "ld_sig": {
+      "type": "number"
+    },
+    "lt": {
+      "type": "number"
+    },
+    "lt_sig": {
+      "type": "number"
+    },
+    "ndev": {
+      "type": "number"
+    },
+    "ndev_sig": {
+      "type": "number"
+    },
+    "age": {
+      "type": "number"
+    },
+    "age_sig": {
+      "type": "number"
+    },
+    "nuc": {
+      "type": "number"
+    },
+    "nuc_sig": {
+      "type": "number"
+    },
+    "exp": {
+      "type": "number"
+    },
+    "exp_sig": {
+      "type": "number"
+    },
+    "rexp": {
+      "type": "number"
+    },
+    "rexp_sig": {
+      "type": "number"
+    },
+    "sexp": {
+      "type": "number"
+    },
+    "sexp_sig": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

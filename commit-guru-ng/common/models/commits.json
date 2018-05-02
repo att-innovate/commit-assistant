@@ -33,9 +33,9 @@
       "type": "string"
     },
     "contains_bug": {
-			"type": "boolean",
+      "type": "boolean",
       "default": false
-		},
+    },
     "linked": {
       "type": "boolean"
     },

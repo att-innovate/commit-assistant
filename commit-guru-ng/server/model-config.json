@@ -50,5 +50,13 @@
   "test1": {
     "dataSource": "postDb",
     "public": true
+  },
+  "metrics": {
+    "dataSource": "postDb",
+    "public": true
+  },
+  "glm_coefficients": {
+    "dataSource": "postDb",
+    "public": true
   }
 }
