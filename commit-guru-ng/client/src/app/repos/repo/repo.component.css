@@ -1,0 +1,26 @@
+.data-grid {
+    width:50%;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-auto-rows: auto auto;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+} 
+
+.box {
+    width:300px;
+    background-color: white;
+    margin: 5px;
+    text-align: center;
+}
+
+.info {
+    margin-top:5px;
+    background-color:#eeeeee;
+    position: absolute;
+    width:250px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 13px;
+    box-shadow: 0px 4px 2px #00000038;
+}

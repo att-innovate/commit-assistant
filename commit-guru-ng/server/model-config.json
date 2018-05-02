@@ -46,9 +46,5 @@
   "commits": {
     "dataSource": "postDb",
     "public": true
-  },
-  "test1": {
-    "dataSource": "postDb",
-    "public": true
   }
 }

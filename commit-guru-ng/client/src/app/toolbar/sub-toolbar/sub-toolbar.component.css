@@ -1,0 +1,19 @@
+.main {
+    background-color: #eeeeee;
+    border-bottom: 2px solid rgb(179, 173, 173);
+}
+
+
+.container {
+    background-color: #eeeeee;
+    color: rgb(45, 45, 61);
+    width: 30%;
+    margin-left: 220px;
+
+}
+
+a {
+    color: black;
+    font-weight: 300;
+}
+

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService, IRepo } from '../../-services/store.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'recent-repos',
@@ -9,10 +10,22 @@ import { StoreService, IRepo } from '../../-services/store.service';
 export class RecentReposComponent implements OnInit {
   repos: IRepo[] = [];
 
-  constructor(private store: StoreService) { }
+  constructor(private store: StoreService, private router: Router) { }
 
   ngOnInit() {
-    this.repos = this.store.repos;
+
+    this.store.repos$.subscribe(repos => {
+      if (this.repos) {
+        this.repos = repos;
+      }
+    });
+    //this.repos = this.store.repos;
+  }
+
+
+  onRepoClick(item: IRepo) {
+    this.store.getRepoMterics(item.id);
+    this.router.navigateByUrl('repo');
   }
 
 }
