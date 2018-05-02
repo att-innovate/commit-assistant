@@ -14,13 +14,10 @@ module.exports = function(Metrics) {
                 var resjason ={};
                 resjason['name']=response[0]['name'];
                 resjason['status']=response[0]['status'];
+                resjason['id']=rid;
                 resjason['commit_count']=Number(response[0]['commit_count']);
                 resjason['commit_contains_bug_count']=Number(response[0]['commit_contains_bug_count']);
 
-
-
-                
-            
         Metrics.find({where: {repo : rid}, limit: 13}, function(err, response) {
             if (err) console.error(err);
             if(response.length == 0) {

@@ -1,3 +1,22 @@
-<p>
-  repo works!
-</p>
+<div style="display:flex">
+
+  <div style="background-color: white;width:20%">
+    <chart [type]="type" [data]="data" [options]="options" width="200"></chart>
+  </div>
+
+  <div class="data-grid" >
+    <div *ngFor="let item of metrics?.metrics" class="box">
+      <div style="background-color:white;padding:10px 0 10px 0">{{item.name}} 
+        <span style="float: right;padding-right:10px" (mouseover)="onOver(item)" (mouseout)="onOut()">
+          <i class="fa fa-question-circle" aria-hidden="true"></i>
+          <div *ngIf="overItem && overItem==item" class="info">{{overItem?.descrption}}
+
+          </div>
+        </span>
+      </div>
+      <div style="background-color:rgb(242, 222, 222);padding:10px 0 10px 0">{{item.buggy | number}}</div>
+      <div style="background-color:rgb(223, 240, 216);padding:10px 0 10px 0">{{item.nonbuggy | number}}</div>
+    </div>
+  </div>
+
+</div>

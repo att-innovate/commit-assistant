@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StoreService } from '../-services/store.service';
 
 @Component({
   selector: 'home',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store:StoreService) { }
 
   ngOnInit() {
+    this.store.getRepos();
   }
+
+  
 
 }
