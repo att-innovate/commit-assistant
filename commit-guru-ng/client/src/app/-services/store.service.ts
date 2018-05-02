@@ -42,7 +42,7 @@ export interface IRepo {
 
 @Injectable()
 export class StoreService {
-  baseApi: string = "http://172.22.131.97:3000/api";
+  baseApi: string = "http://localhost:3000/api";
 
   private _repos$: BehaviorSubject<IRepo[]>;
   private _repoMetrics$: BehaviorSubject<IMetrics>;
