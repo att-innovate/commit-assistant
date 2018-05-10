@@ -1,0 +1,12 @@
+<h4>{{title}}</h4>
+<hr>
+
+
+<div class="content" >
+
+  <div *ngFor="let item of data" style="text-align: center">
+      {{item.name}}
+  <div style="background-color: #f2dede;padding: 10px">{{item.significant | number}}</div>
+  
+</div>
+</div>

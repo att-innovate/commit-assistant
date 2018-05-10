@@ -15,6 +15,7 @@ import { SubToolbarComponent } from './toolbar/sub-toolbar/sub-toolbar.component
 import { OverviewComponent } from './repos/overview/overview.component';
 import { CommitsComponent } from './repos/commits/commits.component';
 import { OptionsComponent } from './repos/options/options.component';
+import { CommitInfoCatComponent } from './repos/commits/commit-info-cat/commit-info-cat.component';
 
 const appRoutes: Route[] = [
 
@@ -41,7 +42,8 @@ const appRoutes: Route[] = [
     SubToolbarComponent,
     OverviewComponent,
     CommitsComponent,
-    OptionsComponent
+    OptionsComponent,
+    CommitInfoCatComponent
   ],
   imports: [
     BrowserModule,

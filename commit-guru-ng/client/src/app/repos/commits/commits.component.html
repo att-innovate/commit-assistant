@@ -2,8 +2,22 @@
   <h1>Commits</h1>
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let item of commits">
-      {{item?.commit_message}}
-      <small style="float: right">{{item.author_name}} on {{item.author_date}}</small>
+
+      <div class="commit-item" (click)="viewCommit(item)">
+        <small class="classification-box">{{item?.classification}}</small>
+        {{item?.commit_message}}
+
+        <small style="float: right">{{item.author_name}} on {{item.author_date}}</small>
+      </div>
+      <div class="info" *ngIf="commitInfo && selected==item">
+        <commit-info-cat title="Diffusion" [data]="commitInfo.diffusion"></commit-info-cat>
+        <commit-info-cat title="Experience" [data]="commitInfo.experience"></commit-info-cat>
+        <commit-info-cat title="History" [data]="commitInfo.history"></commit-info-cat>
+        <commit-info-cat title="Size" [data]="commitInfo.size"></commit-info-cat>
+      </div>
+
     </li>
+
+
   </ul>
 </div>
