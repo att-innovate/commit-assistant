@@ -58,5 +58,9 @@
   "glm_coefficients": {
     "dataSource": "postDb",
     "public": true
+  },
+  "feedback": {
+    "dataSource": "postDb",
+    "public": true
   }
 }

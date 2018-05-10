@@ -13,17 +13,29 @@
       "type": "string",
       "required": true
     },
-    "email": {
-      "type": "string"
-    },
-    "status": {
+    "url": {
       "type": "string"
     },
     "creation_date": {
       "type": "date"
     },
-    "url": {
+    "ingestion_date": {
+      "type": "date"
+    },
+    "analysis_date": {
+      "type": "date"
+    },
+    "status": {
       "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "listed": {
+      "type": "boolean"
+    },
+    "last_data_dump": {
+      "type": "date"
     }
   },
   "validations": [],

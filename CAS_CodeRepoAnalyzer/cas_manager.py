@@ -15,6 +15,7 @@ from queue import *
 import threading
 import time
 from monthdelta import MonthDelta
+#import datetime
 
 class CAS_Manager(threading.Thread):
     """ 
@@ -36,12 +37,15 @@ class CAS_Manager(threading.Thread):
 
         session = Session()
         repo_update_freq = int(config['repoUpdates']['freqInDays'])
-        refresh_date = str(datetime.utcnow() - timedelta(days=repo_update_freq))
+        refresh_date_dateTime = (datetime.utcnow() - timedelta(days=repo_update_freq))
+        refresh_date = str(refresh_date_dateTime)
+        refresh_date_dateTime = datetime.strptime(refresh_date, "%Y-%m-%d %H:%M:%S.%f")
+        refresh_date = refresh_date_dateTime.strftime("%Y-%m-%d %H:%M:%S.%f")
 
         repos_to_get = (session.query(Repository) 
                             .filter( 
-                                (Repository.status == "Waiting to be Ingested") | 
-                                (Repository.ingestion_date < refresh_date) &
+                                (Repository.status == "Waiting to be Ingested") |
+                                (Repository.ingestion_date < refresh_date_dateTime) &
                                 (Repository.status != "Error") &
                                 (Repository.status != "Analyzing"))
                             .all())

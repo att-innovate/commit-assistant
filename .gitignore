@@ -2,3 +2,5 @@ commit-guru-ng/common/models/test-1.js
 commit-guru-ng/common/models/test-1.json
 commit-guru-ng/server/boot/zShlif.txt
 commit-guru-ng/common/models/test-1.json
+commit-guru-ng/client/src/app/-services/store.service.ts
+commit-guru-ng/server/datasources.json
