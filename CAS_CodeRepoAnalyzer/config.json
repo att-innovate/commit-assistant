@@ -24,7 +24,7 @@
 	"system": {
 		"workers": "1"
 	},
-	"github": {
+	"github": { 
 		"user": "yanail",
 		"pass": "git123!"
 	},
