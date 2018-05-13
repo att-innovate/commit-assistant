@@ -17,7 +17,8 @@ export class OverviewComponent implements OnInit {
     datasets: [
       {
         label: "My First dataset",
-        data: [80, 20]
+        data: [80, 20],
+        backgroundColor:["blue","red"]
       }
     ]
   };
