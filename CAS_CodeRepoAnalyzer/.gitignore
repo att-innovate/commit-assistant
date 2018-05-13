@@ -46,6 +46,5 @@ ingester/CASRepos/git/*
 analyzer/datasets/*
 
 CASLog.log
-config.json
 .DS_Store
 !.gitkeep
