@@ -1,0 +1,37 @@
+{
+	"db": {
+		"type":"postgresql",
+		"adapter":"pypostgresql",
+		"username": "postgres",
+		"password": "postgres",
+		"host": "localhost",
+		"port": "5432",
+		"database": "cas"
+	},
+	"logging_system": {
+		"filename": "CASLog.log"
+	},
+	"logging_analyzer": {
+		"filename": "Analyzer.log"
+	},
+	"gmail": {
+		"user": "l.y1984@gmail.com",
+		"pass": "PASSWORD"
+	},
+	"repoUpdates": {
+		"freqInDays": "1"
+	},
+	"system": {
+		"workers": "1"
+	},
+	"github": {
+		"user": "yanail",
+		"pass": "git123!"
+	},
+	"glm_modeling":{
+		"months": "3"
+	},
+	"data_dumps": {
+		"location": "/Users/yanail/Documents/Projects/02-CommitAssistant/git/CAS_CodeRepoAnalyzer/analyzer/datasets"
+	} 
+}
