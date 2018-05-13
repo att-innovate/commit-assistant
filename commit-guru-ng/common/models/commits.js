@@ -12,30 +12,44 @@ module.exports = function(Commits) {
         });  
     };
     Commits.commitsByRepo = function (rid, cb) {
-        Commits.find({where: {repository_id: rid}, limit: 13}, function(err, response) {
-            if (err) console.error(err);
-            cb(null, response);
-        }          
-        );
-        
+        Commits.count({"repository_id": rid},function(err, response) {
+            var numOfCommits = response;
+            var numOfMsgs = 13
+            Commits.find({where: {repository_id: rid}, limit: numOfMsgs}, function(err, response) {
+                if (err) console.error(err);
+                var resault = {
+                    numOfCommits: numOfCommits,
+                    commits: response
+                };
+                cb(null, resault);
+            });
+        });
+    };
+
+    Commits.commitsByRepop = function (rid, page, numOfMsgs, cb) {
+        var skipit = page*numOfMsgs
+        Commits.find({where: {"repository_id": rid}, skip: skipit, limit: numOfMsgs}, function(err, response) {
+                if (err) console.error(err);
+                cb(null, response);
+            });
     };
 
     Commits.commitsById = function (chash, cb) {
         Commits.find({where: {commit_hash: chash}, limit: 13}, function(err, response) {
             if (err) console.error(err);
             if(response.length == 0) {
-                console.error("Repositiry not found. repository_id = "+rid);
+                console.error("Repositiry not found. commit_hash = "+chash);
             }
             else {
                 var resjason ={};
                 var details = [];
                 details={
-                commit_message: response[0]["commit_message"],
-                fix: response[0]["fix"],
-                classification: response[0]["classification"],
-                linked: response[0]["linked"],
-                contains_bug: response[0]["contains_bug"],
-                fixes: response[0]["fixes"],
+                    commit_message: response[0]["commit_message"],
+                    fix: response[0]["fix"],
+                    classification: response[0]["classification"],
+                    linked: response[0]["linked"],
+                    contains_bug: response[0]["contains_bug"],
+                    fixes: response[0]["fixes"],
                 };
                 resjason['details']=details;
 
@@ -153,6 +167,19 @@ module.exports = function(Commits) {
         accepts: {arg: 'rid', type: 'string', http: { source: 'query' } },
         returns: {
             arg: 'commitsByRepo',
+            type: 'string'
+        }
+    });
+    Commits.remoteMethod('commitsByRepop', {
+        http: {
+            path: '/commitsByRepop',
+            verb: 'get'
+        },
+        accepts: [{arg: 'rid', type: 'string', http: { source: 'query' }},
+                  {arg: 'page', type: 'number', http: { source: 'query' }},
+                  {arg: 'numOfMsgs', type: 'number', http: { source: 'query' }}],
+        returns: {
+            arg: 'commitsByRepop',
             type: 'string'
         }
     });
