@@ -27,11 +27,21 @@ module.exports = function(Commits) {
     };
 
     Commits.commitsByRepop = function (rid, page, numOfMsgs, cb) {
+        Commits.count({"repository_id": rid},function(err, response) {
+            var numOfCommits = response;
+            //var numOfMsgs = 13
+        if (!page) page = 0;
+        if (!numOfMsgs) numOfMsgs=13; //default
         var skipit = page*numOfMsgs
         Commits.find({where: {"repository_id": rid}, skip: skipit, limit: numOfMsgs}, function(err, response) {
                 if (err) console.error(err);
-                cb(null, response);
+                var resault = {
+                    numOfCommits: numOfCommits,
+                    commits: response
+                };
+                cb(null, resault);
             });
+        });
     };
 
     Commits.commitsById = function (chash, cb) {
