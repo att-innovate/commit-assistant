@@ -47,10 +47,6 @@
     "dataSource": "postDb",
     "public": true
   },
-  "test1": {
-    "dataSource": "postDb",
-    "public": true
-  },
   "metrics": {
     "dataSource": "postDb",
     "public": true

@@ -4,9 +4,9 @@
     "connector": "memory"
   },
   "postDb": {
-    "host": "localhost",
+    "host": "10.252.16.80",
     "port": 5432,
-    "url": "postgres:postgres@localhost/cas",
+    "url": "postgres:postgres@10.252.16.80",
     "database": "cas",
     "password": "postgres",
     "name": "postDb",

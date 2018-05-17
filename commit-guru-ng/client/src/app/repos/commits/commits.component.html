@@ -1,9 +1,9 @@
 <div class="container">
-  <h1>Commits</h1>
+  <h1>{{totalCommits | number}} Commits</h1>
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let item of commits">
 
-      <div class="commit-item" (click)="viewCommit(item)">
+      <div class="commit-item" [style.background-color]="item.fix=='True'?'#e1d6d6':'#f5f5f5'" (click)="viewCommit(item)">
         <small class="classification-box">{{item?.classification}}</small>
         {{item?.commit_message}}
 
@@ -20,4 +20,11 @@
 
 
   </ul>
+
+  <dir style="display:flex">
+    <div [class]="i==onPage?'pagination-box selected':'pagination-box'" *ngFor="let item of pages;let i = index" (click)="pageClick(item)">{{item}}
+
+    </div>
+  </dir>
+  
 </div>

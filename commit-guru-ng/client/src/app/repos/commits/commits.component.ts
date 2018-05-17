@@ -8,19 +8,36 @@ import { StoreService, ICommit, ICommitInfo } from '../../-services/store.servic
 })
 export class CommitsComponent implements OnInit {
   commits: ICommit[];
-  commitInfo:ICommitInfo;
+  totalCommits: number;
+  commitInfo: ICommitInfo;
   selected;
+  pages: number[];
+  onPage: number = 0;
+  metrics;
 
   constructor(private store: StoreService) {
+
+    this.store.repoMetrics$.subscribe(metrics => {
+      this.metrics = metrics;
+    })
     this.store.commitInfo$.subscribe(commitInfo => {
+
       this.commitInfo = commitInfo;
     });
 
-    this.store.commits$.subscribe(commits => {
+    this.store.commits$.subscribe(commitsData => {
 
-      if (commits) {
-        this.commits = commits;
+      if (commitsData) {
+        this.commits = commitsData.commits;
+        this.totalCommits = commitsData.numOfCommits;
+        this.pages = [];
 
+        let total = Math.floor(this.totalCommits / 13);
+
+        for (let i = 0; i < total; i++) {
+          this.pages.push(i + 1);
+
+        }
       }
     })
   }
@@ -31,8 +48,13 @@ export class CommitsComponent implements OnInit {
   }
 
   viewCommit(commit) {
-    this.selected = this.selected == commit?null:commit;
+    this.selected = this.selected == commit ? null : commit;
     this.store.getCommitInfoById(commit.commit_hash);
   }
 
+  pageClick(num) {
+
+    this.onPage = num-1;
+    this.store.getCommitsByRepo(this.metrics.id, num);
+  }
 }

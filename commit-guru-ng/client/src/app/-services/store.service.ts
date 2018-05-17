@@ -43,6 +43,11 @@ export interface ICommitInfo {
   size: ICommitInfoCat[];
 }
 
+export interface ICommitsRepo {
+  commits:ICommit[];
+  numOfCommits:number;
+}
+
 export interface ICommit {
   age;
   author_date;
@@ -76,11 +81,12 @@ export interface ICommit {
 
 @Injectable()
 export class StoreService {
-  baseApi: string = "http://localhost:3000/api";
+  //baseApi: string = "http://localhost:3000/api";
+  baseApi: string = "http://172.22.129.123:3000/api";
 
   private _repos$: BehaviorSubject<IRepo[]>;
   private _repoMetrics$: BehaviorSubject<IMetrics>;
-  private _commits$: BehaviorSubject<ICommit[]>;
+  private _commits$: BehaviorSubject<ICommitsRepo>;
   private _commitInfo$: BehaviorSubject<ICommitInfo>;
 
   repos: IRepo[];
@@ -88,13 +94,13 @@ export class StoreService {
   constructor(private http: HttpClient) {
     this._repos$ = <BehaviorSubject<IRepo[]>>new BehaviorSubject(null);
     this._repoMetrics$ = <BehaviorSubject<IMetrics>>new BehaviorSubject(null);
-    this._commits$ = <BehaviorSubject<ICommit[]>>new BehaviorSubject(null);
+    this._commits$ = <BehaviorSubject<ICommitsRepo>>new BehaviorSubject(null);
     this._commitInfo$ = <BehaviorSubject<ICommitInfo>>new BehaviorSubject(null);
   }
 
   get repos$(): Observable<IRepo[]> { return this._repos$.asObservable(); }
   get repoMetrics$(): Observable<IMetrics> { return this._repoMetrics$.asObservable(); }
-  get commits$(): Observable<ICommit[]> { return this._commits$.asObservable(); }
+  get commits$(): Observable<ICommitsRepo> { return this._commits$.asObservable(); }
   get commitInfo$(): Observable<ICommitInfo> { return this._commitInfo$.asObservable(); }
 
   getRepos() {
@@ -149,7 +155,7 @@ export class StoreService {
     //this.http.get<any>(`${this.baseApi}/commits/commitsByRepo?rid=${id}`).subscribe(data => {
     this.http.get<any>(`${this.baseApi}/commits/commitsByRepop?rid=${id}&page=${page}&numOfMsgs=${numOfMsgs}`).subscribe(data => {
       if (data) {
-        this._commits$.next([...data.commitsByRepo]);
+        this._commits$.next(Object.assign({},data.commitsByRepop));
       }
 
     }, error => {

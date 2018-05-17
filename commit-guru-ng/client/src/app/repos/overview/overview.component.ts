@@ -12,16 +12,7 @@ export class OverviewComponent implements OnInit {
   overItem: IMetric;
 
   type = 'doughnut';
-  data = {
-    labels: ["Don't introduce bugs", "May Introduce bugs"],
-    datasets: [
-      {
-        label: "My First dataset",
-        data: [80, 20],
-        backgroundColor:["blue","red"]
-      }
-    ]
-  };
+  data:any;
   options = {
     responsive: true,
     maintainAspectRatio: false
@@ -34,8 +25,13 @@ export class OverviewComponent implements OnInit {
       if (metrics) {
         this.metrics = metrics;
 
-        this.data.datasets[0].data = [(this.metrics.commit_count - this.metrics.commit_contains_bug_count), this.metrics.commit_contains_bug_count];
-
+        this.data = {
+          labels: ["Don't introduce bugs", "May Introduce bugs"],
+          datasets: [{
+            data: [(this.metrics.commit_count - this.metrics.commit_contains_bug_count), this.metrics.commit_contains_bug_count],
+            backgroundColor: ["#DFF0D9", "#F2DEDE"]
+          }]
+        }
       }
     })
   }
