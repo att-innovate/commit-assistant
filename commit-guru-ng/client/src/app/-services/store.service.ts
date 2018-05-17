@@ -29,18 +29,18 @@ export interface IRepo {
 }
 
 export interface ICommitInfoCat {
-  descrption:string;
-  name:string;
-  significant:number;
+  descrption: string;
+  name: string;
+  significant: number;
 }
 
 export interface ICommitInfo {
   author,
-  details:any,
-  diffusion:ICommitInfoCat[];
-  experience:ICommitInfoCat[];
-  history:ICommitInfoCat[];
-  size:ICommitInfoCat[];
+  details: any,
+  diffusion: ICommitInfoCat[];
+  experience: ICommitInfoCat[];
+  history: ICommitInfoCat[];
+  size: ICommitInfoCat[];
 }
 
 export interface ICommit {
@@ -145,14 +145,15 @@ export class StoreService {
     })
   }
 
-  getCommitsByRepo(id) {
-    this.http.get<any>(`${this.baseApi}/commits/commitsByRepo?rid=${id}`).subscribe(data => {
+  getCommitsByRepo(id, page: number = 0, numOfMsgs: number = 13) {
+    //this.http.get<any>(`${this.baseApi}/commits/commitsByRepo?rid=${id}`).subscribe(data => {
+    this.http.get<any>(`${this.baseApi}/commits/commitsByRepop?rid=${id}&page=${page}&numOfMsgs=${numOfMsgs}`).subscribe(data => {
       if (data) {
         this._commits$.next([...data.commitsByRepo]);
       }
 
     }, error => {
-
+      console.error("getCommitsByRepo call error")
     })
 
   }
