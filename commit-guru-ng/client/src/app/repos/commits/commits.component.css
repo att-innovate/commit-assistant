@@ -39,7 +39,7 @@ li {
     /* margin: 10px; */
     border: 1px solid #d8bfbf;
     background-color: #cdd4dc;
-    margin-left: 2px;
+    margin:0 1px;
     text-align: center;
     border-radius: 5px;
     /* cursor: pointer; */
@@ -50,8 +50,27 @@ li {
     background-color: #8898aa;
     cursor: pointer;
 }
+.not-selected {
+    /* box-shadow: inset 0px -1px 2px black; */
+}
 
 .selected {
-    background-color: #8898aa;
+    font-weight: bold;
+    background-color: #eef3f9;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    /* box-shadow: inset 0px -1px 2px black; */
+    border: 1px solid #d8bfbf;
+    background-color: #cdd4dc;
+}
+
+button:active {
+    background-color: #eef3f9;
     cursor: pointer;
 }

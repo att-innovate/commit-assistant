@@ -2,6 +2,7 @@
 body {
     font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
     height: 100%;
+    background-color: #eeeeee;
 }
 
 h1, h2, h3, h4 {

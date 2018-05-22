@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from "rxjs/Observable";
 import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { environment } from '../../environments/environment';
 
 export interface IMetrics {
   metrics: IMetric[];
@@ -82,7 +83,8 @@ export interface ICommit {
 @Injectable()
 export class StoreService {
   //baseApi: string = "http://localhost:3000/api";
-  baseApi: string = "http://172.22.129.123:3000/api";
+  
+  baseApi: string;
 
   private _repos$: BehaviorSubject<IRepo[]>;
   private _repoMetrics$: BehaviorSubject<IMetrics>;
@@ -96,6 +98,8 @@ export class StoreService {
     this._repoMetrics$ = <BehaviorSubject<IMetrics>>new BehaviorSubject(null);
     this._commits$ = <BehaviorSubject<ICommitsRepo>>new BehaviorSubject(null);
     this._commitInfo$ = <BehaviorSubject<ICommitInfo>>new BehaviorSubject(null);
+
+    this.baseApi = `http://${environment.serverurl}:3000/api`;
   }
 
   get repos$(): Observable<IRepo[]> { return this._repos$.asObservable(); }

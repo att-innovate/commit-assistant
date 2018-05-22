@@ -22,9 +22,11 @@
   </ul>
 
   <dir style="display:flex">
-    <div [class]="i==onPage?'pagination-box selected':'pagination-box'" *ngFor="let item of pages;let i = index" (click)="pageClick(item)">{{item}}
-
+    <button [disabled]="onPage==0" (click)="onpreviousClick()"><i class="fa fa-backward" aria-hidden="true"></i></button>
+    <div [class]="i==onPage?'pagination-box selected':'pagination-box not-selected'" *ngFor="let item of showPages;let i = index" (click)="pageClick(item)">{{item+1}}
+     
     </div>
+    <button [disabled]="onPage==allPages" (click)="onpnextClick()"><i class="fa fa-forward" aria-hidden="true"></i></button>
   </dir>
   
 </div>
