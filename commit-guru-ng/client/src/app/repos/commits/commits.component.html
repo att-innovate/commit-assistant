@@ -9,16 +9,20 @@
 
         <small style="float: right">{{item.author_name}} on {{item.author_date}}</small>
       </div>
-      <div class="info" *ngIf="commitInfo && selected==item">
-        <commit-info-cat title="Diffusion" [data]="commitInfo.diffusion"></commit-info-cat>
-        <commit-info-cat title="Experience" [data]="commitInfo.experience"></commit-info-cat>
-        <commit-info-cat title="History" [data]="commitInfo.history"></commit-info-cat>
-        <commit-info-cat title="Size" [data]="commitInfo.size"></commit-info-cat>
+      <div   style="background-color: white;padding: 10px;" *ngIf="commitInfo && selected==item">
+        <div class="info">
+            <commit-info-cat title="Diffusion" [data]="commitInfo.diffusion"></commit-info-cat>
+            <commit-info-cat title="Experience" [data]="commitInfo.experience"></commit-info-cat>
+            <commit-info-cat title="History" [data]="commitInfo.history"></commit-info-cat>
+            <commit-info-cat title="Size" [data]="commitInfo.size"></commit-info-cat>
+        </div>
+       
+        
+        <commit-info-details [data]="commitInfo?.details"></commit-info-details>
       </div>
 
+      
     </li>
-
-
   </ul>
 
   <dir style="display:flex">

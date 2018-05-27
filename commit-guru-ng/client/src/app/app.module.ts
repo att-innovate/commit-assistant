@@ -16,6 +16,7 @@ import { OverviewComponent } from './repos/overview/overview.component';
 import { CommitsComponent } from './repos/commits/commits.component';
 import { OptionsComponent } from './repos/options/options.component';
 import { CommitInfoCatComponent } from './repos/commits/commit-info-cat/commit-info-cat.component';
+import { CommitInfoDetailsComponent } from './repos/commits/commit-info-details/commit-info-details.component';
 
 const appRoutes: Route[] = [
 
@@ -43,7 +44,8 @@ const appRoutes: Route[] = [
     OverviewComponent,
     CommitsComponent,
     OptionsComponent,
-    CommitInfoCatComponent
+    CommitInfoCatComponent,
+    CommitInfoDetailsComponent
   ],
   imports: [
     BrowserModule,

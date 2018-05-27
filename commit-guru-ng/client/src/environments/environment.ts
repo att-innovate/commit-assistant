@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  serverurl:"172.22.128.240"
+  serverurl:"172.22.128.252"
 };

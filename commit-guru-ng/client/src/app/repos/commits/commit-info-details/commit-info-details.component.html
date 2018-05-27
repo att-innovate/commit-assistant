@@ -1,0 +1,20 @@
+<div *ngIf="data" style="display: flex;justify-content:space-between;width:100%">
+  <div>
+    <p>{{data.commit_message}}</p>
+  </div>
+
+  <div>
+    <p>Updated files :</p>
+    <p class="note" *ngFor="let item of data.fileschanged">
+      {{item}}
+    </p>
+  </div>
+
+  <div *ngIf="data.fixes">
+    <p>Fixed by :</p>
+    <p class="note" *ngFor="let item of data.fixes">
+        {{item}}
+      </p>
+  </div>
+
+</div>

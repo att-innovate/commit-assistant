@@ -35,9 +35,19 @@ export interface ICommitInfoCat {
   significant: number;
 }
 
+export interface ICommitDetails {
+  classification: string;
+  commit_message: string;
+  contains_bug: boolean
+  fileschanged: string[];
+  fix: string;
+  fixes: string;
+  linked: boolean
+}
+
 export interface ICommitInfo {
-  author,
-  details: any,
+  author: any;
+  details: ICommitDetails;
   diffusion: ICommitInfoCat[];
   experience: ICommitInfoCat[];
   history: ICommitInfoCat[];
@@ -45,8 +55,8 @@ export interface ICommitInfo {
 }
 
 export interface ICommitsRepo {
-  commits:ICommit[];
-  numOfCommits:number;
+  commits: ICommit[];
+  numOfCommits: number;
 }
 
 export interface ICommit {
@@ -83,7 +93,7 @@ export interface ICommit {
 @Injectable()
 export class StoreService {
   //baseApi: string = "http://localhost:3000/api";
-  
+
   baseApi: string;
 
   private _repos$: BehaviorSubject<IRepo[]>;
@@ -159,7 +169,7 @@ export class StoreService {
     //this.http.get<any>(`${this.baseApi}/commits/commitsByRepo?rid=${id}`).subscribe(data => {
     this.http.get<any>(`${this.baseApi}/commits/commitsByRepop?rid=${id}&page=${page}&numOfMsgs=${numOfMsgs}`).subscribe(data => {
       if (data) {
-        this._commits$.next(Object.assign({},data.commitsByRepop));
+        this._commits$.next(Object.assign({}, data.commitsByRepop));
       }
 
     }, error => {
